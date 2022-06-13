@@ -76,7 +76,9 @@ function selectedDrink(elemento) {
 function ActivateOrder(){
     if (food&drink&desert==1) {
         const botao = document.querySelector(".button");
-        if(botao !==null){}
+        if(botao !==null){
         botao.classList.add("buttonSelected");
-        botao.classList.remove("button");}
+        botao.classList.remove("button");
+    }
  }
+}

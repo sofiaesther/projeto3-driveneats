@@ -8,7 +8,7 @@ let desertsel;
 let valorfood;
 let valordrink;
 let valordesert;
-let telefone = 71992972800;
+let telefone = 5571992972800;
 
 function selectedFood(elemento) {
         const Clicado = document.querySelector(".selected.food");
@@ -21,9 +21,10 @@ function selectedFood(elemento) {
         elemento.classList.add("foodsel");
 
 
-        valorfood = document.querySelector(".foodsel>h3")
+        valorfood = Number(document.querySelector(".foodsel>h3").innerText.substring(3));
 
-        foodsel= document.querySelector(".foodsel>h2")
+        foodsel= document.querySelector(".foodsel>h2").innerText;
+        console.log(foodsel);
 
         food=1;
         ActivateOrder();
@@ -40,8 +41,9 @@ function selectedDrink(elemento) {
     elemento.classList.add("selected");
     elemento.classList.add("drinksel");
 
-    valordrink = document.querySelector(".drink.selected>h3")
-    drinksel= document.querySelector(".drink.selected>h2")
+    valordrink = Number(document.querySelector(".drink.selected>h3").innerText.substring(3));
+    drinksel= document.querySelector(".drink.selected>h2").innerText;
+    console.log(drinksel);
 
         drink=1;
         ActivateOrder();
@@ -56,25 +58,25 @@ function selectedDrink(elemento) {
         elemento.classList.add("selected");
         elemento.classList.add("desertsel");
         
-        valordesert = document.querySelector(".desert.selected>h3").innerText;
+        valordesert = Number(document.querySelector(".desert.selected>h3").innerText.substring(3));
         desertsel= document.querySelector(".desert.selected>h2").innerText;
-        console.log(valordesert.substring(3))
+        console.log(desertsel)
     
         desert=1;
         ActivateOrder();
       }
       function endOrder(botao){
-          let valor = document.querySelector("h3.selected")
-          console.log(valor.innerText)
-        
-        window.open(`https://wa.me/${telefone}?text=Olá, gostaria de fazer o pedido:\n- Prato: ${foodsel} \n- Bebida: ${drinksel}\n- Sobremesa: ${desertsel}\n`)
+        let valor = valordesert+valordrink+valorfood
+        let uri = `Olá, gostaria de fazer o pedido:\n- Prato: ${foodsel} \n- Bebida: ${drinksel}\n- Sobremesa: ${desertsel}\nTotal: R$ ${valor.toFixed(2)}`
+        let pathtowpp = `https://wa.me/${telefone}?text=`+encodeURIComponent(uri);
+        window.open(pathtowpp);
         
     }
     
 function ActivateOrder(){
     if (food&drink&desert==1) {
         const botao = document.querySelector(".button");
+        if(botao !==null){}
         botao.classList.add("buttonSelected");
-        botao.classList.remove("button");
+        botao.classList.remove("button");}
  }
-}
